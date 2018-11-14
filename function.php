@@ -135,44 +135,7 @@ function gdpr_child_remove_dns_prefetch() {
 add_action( 'init', 'gdpr_child_remove_dns_prefetch');
 
 
-// INFO: Disable WordPress REST API
-
-/**
-* Throw an Error if someone tries to access the REST API
-* Whitelist solution
-*/
-function zine_child_disable_rest_api($access) {
-
-  if (!is_whitelisted($whitelist)) {
-    return new WP_Error('rest_disabled', __('The REST API on this site has been disabled.'), array('status' => rest_authorization_required_code()));
-  }
-}
-add_filter( 'rest_authentication_errors', 'zine_child_disable_rest_api' );
-
-// Gets the current route
-function get_current_namespace() {
-
-  if (isset($_REQUEST['rest_route'])) {
-    $route = ltrim($_REQUEST['rest_route'], '/');
-  } elseif (get_option('permalink_structure')) {
-    $pos = strlen(get_rest_url());
-    $route = substr(get_home_url() . urldecode($_SERVER['REQUEST_URI']), $pos);
-    $route = trim($route, '/');
-  }
-  return substr($route, 0, strpos($route, '/'));
-}
-
-// Checks if route is whitelisted
-function is_whitelisted() {
-
-  $whitelist = array('mwl', 'shariff'); // INFO: Change whitelist here!
-  $namespace = get_current_namespace();
-
-  foreach ($whitelist as $ns) {
-    if ($ns == $namespace) return true;
-  }
-  return false;
-}
+// INFO: Hide WordPress REST API
 
 // Remove REST API info from head and headers
 remove_action( 'xmlrpc_rsd_apis', 'rest_output_rsd' );
