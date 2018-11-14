@@ -12,7 +12,7 @@ This is a WordPress child theme boilerplate, which aims to secure the site and t
 
 ## Instructions
 
-This is a child theme is a boilerplate! If you want to create your own child theme for any  WordPress theme, please fork or clone this repository and change the `gdpr_` prefix in the `functions.php` to your own theme name.
+This child theme is a boilerplate! If you want to create your own child theme for any  WordPress theme, please fork or clone this repository and change the `gdpr_` prefix in the `functions.php` to your own theme name.
 
 Not every parent theme works the same. You may have to change the code in the `gdpr_child_enqueue_scripts()` so that it's working properly.
 
