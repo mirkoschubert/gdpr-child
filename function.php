@@ -3,12 +3,12 @@
 /**
  * Implement Child Theme Scripts and overwrite Google Fonts
  */
-function gdpr_child_scripts() {
+function gdpr_child_enqueue_scripts() {
   wp_enqueue_style('gdpr-style', get_template_directory_uri() . '/style.css', array(), null); // original style.css
   wp_enqueue_style( 'gdpr-child-style', get_stylesheet_directory_uri() . '/style.css', 'gdpr-style', null ); // child style.css
   wp_enqueue_style('gdpr-fonts', get_stylesheet_directory_uri() . '/css/fonts.css'); // Localize Google Fonts
 }
-add_action( 'wp_enqueue_scripts' , 'gdpr' );
+add_action( 'wp_enqueue_scripts' , 'gdpr_child_enqueue_scripts' );
 
 
 /**

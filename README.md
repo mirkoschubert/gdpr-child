@@ -8,14 +8,26 @@ This is a WordPress child theme boilerplate, which aims to secure the site and t
 * Disable oEmbeds (old ones have to be removed by hand)
 * Disable WordPress Emojis (in every modern browser Emojis will be displayed anyway)
 * Remove global DNS Prefetching
-* Disable WordPress REST API for security reasons
+* Hide WordPress REST API for security reasons
 
-### Instructions
+## Instructions
 
-In order to create your own child theme with this boilerplate, you have to replace all `gdpr` strings with the name of your parent theme and edit the initialization part in the `style.css` as well. If you want to append your own CSS code, you should use the `.child` class as a prefix.
+This is a child theme is a boilerplate! If you want to create your own child theme for any  WordPress theme, please fork or clone this repository and change the `gdpr_` prefix in the `functions.php` to your own theme name.
 
-Please note, that this Child Theme is **not** fully functional! If you want to use it, you have to determine whether the parent theme uses `function_exists()` calls or not and change the `functions.php` accordingly.
+Not every parent theme works the same. You may have to change the code in the `gdpr_child_enqueue_scripts()` so that it's working properly.
 
-You may also create additional functions to change the customizer of the parent theme.
+### CSS
 
-To use the `TODO` file you should edit it with VSCode and the `Todo+` extension. Please read their documentation.
+In order to create clean code and a descent inheritance, the child theme uses a `.child` body class once you activated the child theme. If you want to append your own CSS code to the `style.css`, you should use this class as a prefix, e.g.:
+
+```css
+.child p {
+  line-height: 1.6
+}
+```
+
+### Fonts
+
+If you want to localize Google Fonts, simply use the [google-webfonts-helper](https://google-webfonts-helper.herokuapp.com/fonts), copy the downloaded fonts to the `/fonts/` directory and edit the `/css/fonts.css`.
+
+**NOTE:** To use the `TODO` file you should edit it with VSCode and the `Todo+` extension. Please read their documentation for usage information.
